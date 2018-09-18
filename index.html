@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Desafio Loopis</title>
+        <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+
+        <!-- Biblioteca de fontes do Google -->
+        <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+
+        <!-- Biblioteca do Bootstrap: Estilos externos de site web -->
+        <script type="text/javascript" src="http://code.jquery.com/jquery-1.8.3.min.js"></script>       
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+        <!-- Referencia folha de estilo -->
+        <link rel="stylesheet" href="css/style.css"/>
+
+        <!-- Função Aluno.js -->
+        <script type="text/javascript" src="scripts/aluno.js"></script>
+
+    </head>
+    <body>
+
+        <!-- Cabeçalho-->
+        <div class="page-header">
+            <h1>Gerenciando Alunos</h1>
+        </div>
+
+        <!--Formulário-->
+        <div class="container">
+            <form id="frm" class="form-horizontal">
+                <div class="form-group">
+                    <label for="txtMatricula" class="col-sm-2 control-label">Matricula</label>
+                    <div class="col-sm-4">
+                        <input type="text" id="txtMatricula" class="form-control" placeholder="Matricula do aluno">
+                    </div>
+                </div>                    
+                <div class="form-group">
+                    <label for="txtCpf" class="col-lg-2 control-label">CPF</label>
+                    <div class="col-sm-4">
+                        <input type="text" id="txtCpf" class="form-control" placeholder="CPF do aluno">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="txtNome" class="col-lg-2 control-label">Nome</label>
+                    <div class="col-sm-4">
+                        <input type="text" id="txtNome" class="form-control" placeholder="Nome completo do aluno">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="txtNascimento" class="col-lg-2 control-label">Data de Nascimento</label>
+                    <div class="col-sm-4">
+                        <input type="text" id="txtNascimento" class="form-control" placeholder="Data de Nascimento do aluno">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="txtNota1" class="col-lg-2 control-label">Nota 1</label>
+                    <div class="col-sm-4">
+                        <input type="text" id="txtNota1" class="form-control" placeholder="Primeira nota do aluno">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="txtNota2" class="col-lg-2 control-label">Nota 2</label>
+                    <div class="col-sm-4">
+                        <input type="text" id="txtNota2" class="form-control" placeholder="Segunda nota do aluno">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="txtNota3" class="col-lg-2 control-label">Nota 3</label>
+                    <div class="col-sm-4">
+                        <input type="text" id="txtNota3" class="form-control" placeholder="Terceira nota do aluno">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-lg-offset-2 col-sm-4">
+                        <input type="submit" value="OK" id="btnSave" class="btn btn-success"/>
+                    </div>
+                </div>
+            </form>
+        </div>      
+
+        <!--Tabela com os dados-->
+        <div class="container">
+            <table id="tblList" class="table table-bordered"></table>
+        </div>
+
+        <!--Rodapé da página-->
+        <div id="footer">
+            <div class="container">
+                <p class="text-muted credit">Desafio Loopis 2018.1</p>
+            </div>
+        </div>
+
+    </body>
+</html>

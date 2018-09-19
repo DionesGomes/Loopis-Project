@@ -10,12 +10,9 @@ $(function () {
     //Capturar os dados do forulário HTML e transforma-los em String.
     var person = JSON.stringify({
       Matricula: $("#txtMatricula").val(),
-      Cpf: $("#txtCpf").val(),
       Nome: $("#txtNome").val(),
       Nascimento: $("#txtNascimento").val(),
-      Nota1: $("Nota1").val(),
-      Nota2: $("Nota2").val(),
-      Nota3: $("Nota3").val()
+      Salario: $("txtSalario").val(),
     }); 
     //Adicionar o objeto a tabela.
     tblPersons.push(person);
@@ -29,12 +26,9 @@ $(function () {
     // Editar um item seleccionado na tabela.
     tblPersons[selected_index] = JSON.stringify({
         Matricula: $("#txtMatricula").val(),
-        Cpf: $("#txtCpf").val(),
         Nome: $("#txtNome").val(),
         Nascimento: $("#txtNascimento").val(),
-        Nota1: $("txtNota1").val(),
-        Nota2: $("txtNota2").val(),
-        Nota3: $("txtNota3").val()
+        Salario: $("txtSalario").val(),
     });
     //Armazenando os dados em um Local Storage
     localStorage.setItem("tblPersons", JSON.stringify(tblPersons)); 
@@ -56,12 +50,9 @@ $(function () {
             "<thead>" +
             "<tr>" +                
             "<th>Matricula</th>" +
-            "<th>Cpf</th>" +
             "<th>Nome</th>" +
             "<th>Data de Nascimento</th>" +
-            "<th>Nota 1</th>" +
-            "<th>Nota 2</th>" +
-            "<th>Nota 3</th>" +
+            "<th>Salário </th>" +
             "<th>Opções</th>" +
             "</tr>" +
             "</thead>" +
@@ -72,12 +63,9 @@ $(function () {
         var per = JSON.parse(tblPersons[i]);
         $("#tblList tbody").append("<tr>" +                    
                 "<td>" + per.Matricula + "</td>" +
-                "<td>" + per.Cpf + "</td>" +
                 "<td>" + per.Nome + "</td>" +
                 "<td>" + per.Nascimento + "</td>" +
-                "<td>" + per.Nota1 + "</td>" +
-                "<td>" + per.Nota2 + "</td>" +
-                "<td>" + per.Nota3 + "</td>" +                    
+                "<td>" + per.Salario + "</td>" +                 
                 "<td><img src='img/edit.png' alt='Edit" + i + "' class='btnEdit'/>&nbsp &nbsp<img src='img/delete.png' alt='Delete" + i + "' class='btnDelete'/></td>" +
                 "</tr>"
                 );

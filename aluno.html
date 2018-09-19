@@ -16,12 +16,12 @@
         <link rel="stylesheet" href="css/style.css"/>
 
         <!-- Função Aluno.js -->
-        <script type="text/javascript" src="scripts/professor.js"></script>
+        <script type="text/javascript" src="scripts/aluno.js"></script>
 
     </head>
-    <body>
-
-            <!-- Menu -->
+    <body>  
+        
+        <!-- Menu -->
         <nav class="navbar navbar-inverse">
                 <div class="container-fluid">
                   <div class="navbar-header">
@@ -38,44 +38,44 @@
 
         <!-- Cabeçalho-->
         <div class="page-header">
-            <h1>Gerenciando Professor</h1>
+            <h1>Gerenciando Alunos</h1>
         </div>
 
         <!--Formulário-->
         
         <div class="container">
-            <form id="frm" class="form-horizontal">
-                <div class="form-group">
-                    <label for="txtMatricula" class="col-sm-2 control-label">Matricula</label>
-                    <div class="col-sm-4">
-                        <input type="text" id="txtMatricula" class="form-control" placeholder="Matricula do Professor">
+                <form id="frm" class="form-horizontal">
+                    <div class="form-group">
+                        <label for="txtMatricula" class="col-sm-2 control-label">Matricula</label>
+                        <div class="col-sm-4">
+                            <input type="text" id="txtMatricula" class="form-control" placeholder="Matricula do Aluno">
+                        </div>
+                    </div>                    
+                    <div class="form-group">
+                        <label for="txtCpf" class="col-lg-2 control-label">CPF</label>
+                        <div class="col-sm-4">
+                            <input type="text" id="txtCpf" class="form-control" placeholder="CPF do aluno">
+                        </div>
                     </div>
-                </div>                    
-                <div class="form-group">
-                    <label for="txtNome" class="col-lg-2 control-label">Nome</label>
-                    <div class="col-sm-4">
-                        <input type="text" id="txtNome" class="form-control" placeholder="Nome do professor">
+                    <div class="form-group">
+                        <label for="txtNome" class="col-lg-2 control-label">Nome</label>
+                        <div class="col-sm-4">
+                            <input type="text" id="txtNome" class="form-control" placeholder="Nome do aluno">
+                        </div>
                     </div>
-                </div>
-                <div class="form-group">
-                    <label for="txtNascimento" class="col-lg-2 control-label">Data do Nascimento</label>
-                    <div class="col-sm-4">
-                        <input type="text" id="txtNascimento" class="form-control" placeholder="Data do Nascimento do Professor">
+                    <div class="form-group">
+                        <label for="txtNascimento" class="col-lg-2 control-label">Data de Nascimento</label>
+                        <div class="col-sm-4">
+                            <input type="text" id="txtNascimento" class="form-control" placeholder="Data de Nascimento do alu">
+                        </div>
+                    </div>                
+                    <div class="form-group">
+                        <div class="col-lg-offset-2 col-sm-4">
+                            <input type="submit" value="OK" id="btnSave" class="btn btn-success"/>
+                        </div>
                     </div>
-                </div>
-                <div class="form-group">
-                    <label for="txtSalario" class="col-lg-2 control-label">Salário</label>
-                    <div class="col-sm-4">
-                        <input type="text" id="txtSalario" class="form-control" placeholder="Salário do professor">
-                    </div>
-                </div>                
-                <div class="form-group">
-                    <div class="col-lg-offset-2 col-sm-4">
-                        <input type="submit" value="OK" id="btnSave" class="btn btn-success"/>
-                    </div>
-                </div>
-            </form>
-        </div>      
+                </form>
+            </div>    
 
         <!--Tabela com os dados-->
         <div class="container">

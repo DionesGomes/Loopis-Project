@@ -12,10 +12,7 @@ $(function () {
       Matricula: $("#txtMatricula").val(),
       Cpf: $("#txtCpf").val(),
       Nome: $("#txtNome").val(),
-      Nascimento: $("#txtNascimento").val(),
-      Nota1: $("Nota1").val(),
-      Nota2: $("Nota2").val(),
-      Nota3: $("Nota3").val()
+      Nascimento: $("txtNascimento").val(),
     }); 
     //Adicionar o objeto a tabela.
     tblPersons.push(person);
@@ -28,13 +25,10 @@ $(function () {
   function Editar() {
     // Editar um item seleccionado na tabela.
     tblPersons[selected_index] = JSON.stringify({
-        Matricula: $("#txtMatricula").val(),
-        Cpf: $("#txtCpf").val(),
-        Nome: $("#txtNome").val(),
-        Nascimento: $("#txtNascimento").val(),
-        Nota1: $("txtNota1").val(),
-        Nota2: $("txtNota2").val(),
-        Nota3: $("txtNota3").val()
+      Matricula: $("#txtMatricula").val(),
+      Cpf: $("#txtCpf").val(),
+      Nome: $("#txtNome").val(),
+      Nascimento: $("txtNascimento").val(),
     });
     //Armazenando os dados em um Local Storage
     localStorage.setItem("tblPersons", JSON.stringify(tblPersons)); 
@@ -55,13 +49,10 @@ $(function () {
     $("#tblList").html(
             "<thead>" +
             "<tr>" +                
-            "<th>Matricula</th>" +
-            "<th>Cpf</th>" +
-            "<th>Nome</th>" +
-            "<th>Data de Nascimento</th>" +
-            "<th>Nota 1</th>" +
-            "<th>Nota 2</th>" +
-            "<th>Nota 3</th>" +
+            "<th>Matricula do Aluno</th>" +
+            "<th>CPF do Aluno</th>" +
+            "<th>Nome do Aluno</th>" +
+            "<th>Data de Nascimento do Aluno</th>" +
             "<th>Opções</th>" +
             "</tr>" +
             "</thead>" +
@@ -72,12 +63,9 @@ $(function () {
         var per = JSON.parse(tblPersons[i]);
         $("#tblList tbody").append("<tr>" +                    
                 "<td>" + per.Matricula + "</td>" +
-                "<td>" + per.Cpf + "</td>" +
+                "<td>" + per.Cpf+ "</td>" +
                 "<td>" + per.Nome + "</td>" +
-                "<td>" + per.Nascimento + "</td>" +
-                "<td>" + per.Nota1 + "</td>" +
-                "<td>" + per.Nota2 + "</td>" +
-                "<td>" + per.Nota3 + "</td>" +                    
+                "<td>" + per.Nascimentoo + "</td>" +                 
                 "<td><img src='img/edit.png' alt='Edit" + i + "' class='btnEdit'/>&nbsp &nbsp<img src='img/delete.png' alt='Delete" + i + "' class='btnDelete'/></td>" +
                 "</tr>"
                 );
@@ -103,9 +91,6 @@ $(function () {
     $("#txtCpf").val(per.Cpf);
     $("#txtNome").val(per.Nome);
     $("#txtNascimento").val(per.Nascimento);
-    $("#txtNota1").val(per.Nota1);
-    $("#txtNota2").val(per.Nota2);
-    $("#txtNota3").val(per.Nota3);
     $("#txtMatricula").attr("readonly", "readonly");
     $("#txtNome").focus();
   });

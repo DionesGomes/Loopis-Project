@@ -88,9 +88,6 @@ $(function () {
     $("#txtCpf").val(per.Cpf);
     $("#txtNome").val(per.Nome);
     $("#txtNascimento").val(per.Nascimento);
-    $("#txtNota1").val(per.Nota1);
-    $("#txtNota2").val(per.Nota2);
-    $("#txtNota3").val(per.Nota3);
     $("#txtMatricula").attr("readonly", "readonly");
     $("#txtNome").focus();
   });

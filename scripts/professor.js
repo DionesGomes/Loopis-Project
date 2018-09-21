@@ -1,46 +1,46 @@
 $(function () {
   var operacao = "C"; //"C"=Crear
   var selected_index = -1; // Indíce do elemento selecionado na lista.
-  var tblPersons = localStorage.getItem("tblPersons"); //Retornar os dados armazenados.
-  tblPersons = JSON.parse(tblPersons); //Converte String em um Object.
-  if (tblPersons === null) // Se não houver dados, inicializa um array vazio.
-      tblPersons = [];
+  var tblProfessor = localStorage.getItem("tblProfessor"); //Retornar os dados armazenados.
+  tblProfessor = JSON.parse(tblProfessor); //Converte String em um Object.
+  if (tblProfessor === null) // Se não houver dados, inicializa um array vazio.
+      tblProfessor = [];
 
   function Criar() {
     //Capturar os dados do forulário HTML e transforma-los em String.
-    var person = JSON.stringify({
+    var professor = JSON.stringify({
       Matricula: $("#txtMatricula").val(),
       Nome: $("#txtNome").val(),
       Nascimento: $("#txtNascimento").val(),
-      Salario: $("txtSalario").val(),
+      Salario: $("#txtSalario").val(),
     }); 
     //Adicionar o objeto a tabela.
-    tblPersons.push(person);
+    tblProfessor.push(professor);
     //Armazenar os dados em um Local Storage
-    localStorage.setItem("tblPersons", JSON.stringify(tblPersons));
+    localStorage.setItem("tblProfessor", JSON.stringify(tblProfessor));
     alert("Os dados foram armazenados com sucesso!"); //alerta!
     return true;
   }
 
   function Editar() {
     // Editar um item seleccionado na tabela.
-    tblPersons[selected_index] = JSON.stringify({
+    tblProfessor[selected_index] = JSON.stringify({
         Matricula: $("#txtMatricula").val(),
         Nome: $("#txtNome").val(),
         Nascimento: $("#txtNascimento").val(),
-        Salario: $("txtSalario").val(),
+        Salario: $("#txtSalario").val(),
     });
     //Armazenando os dados em um Local Storage
-    localStorage.setItem("tblPersons", JSON.stringify(tblPersons)); 
+    localStorage.setItem("tblProfessor", JSON.stringify(tblProfessor)); 
     alert("Os dados foram editados"); //alerta!
     return true;
   }
 
   function Deletar() {
     //Excluindo um elemento selecionado na tabela!
-    tblPersons.splice(selected_index, 1); 
+    tblProfessor.splice(selected_index, 1); 
     //Atualizando os dados no Local Storage
-    localStorage.setItem("tblPersons", JSON.stringify(tblPersons)); 
+    localStorage.setItem("tblProfessor", JSON.stringify(tblProfessor)); 
     alert("Pessoa exlcuída"); //alerta!
   }
 
@@ -59,8 +59,8 @@ $(function () {
             "<tbody>" +
             "</tbody>"
             ); //Agregando tabela a  estrutura HTML
-    for (var i in tblPersons) {
-        var per = JSON.parse(tblPersons[i]);
+    for (var i in tblProfessor) {
+        var per = JSON.parse(tblProfessor[i]);
         $("#tblList tbody").append("<tr>" +                    
                 "<td>" + per.Matricula + "</td>" +
                 "<td>" + per.Nome + "</td>" +
@@ -86,14 +86,12 @@ $(function () {
     //Obter o identificador do item editado.
     selected_index = parseInt($(this).attr("alt").replace("Edit", ""));
     // Convertando de JSON para o formato editável dos dados.
-    var per = JSON.parse(tblPersons[selected_index]); 
+    var per = JSON.parse(tblProfessor[selected_index]); 
     $("#txtMatricula").val(per.Matricula);
     $("#txtCpf").val(per.Cpf);
     $("#txtNome").val(per.Nome);
     $("#txtNascimento").val(per.Nascimento);
-    $("#txtNota1").val(per.Nota1);
-    $("#txtNota2").val(per.Nota2);
-    $("#txtNota3").val(per.Nota3);
+    $("#txtSalario").val(per.Salario);
     $("#txtMatricula").attr("readonly", "readonly");
     $("#txtNome").focus();
   });

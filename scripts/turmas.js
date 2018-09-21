@@ -1,45 +1,45 @@
 $(function () {
   var operacao = "C"; //"C"=Crear
   var selected_index = -1; // Indíce do elemento selecionado na lista.
-  var tblPersons = localStorage.getItem("tblPersons"); //Retornar os dados armazenados.
-  tblPersons = JSON.parse(tblPersons); //Converte String em um Object.
-  if (tblPersons === null) // Se não houver dados, inicializa um array vazio.
-      tblPersons = [];
+  var tblTurma = localStorage.getItem("tblTurma"); //Retornar os dados armazenados.
+  tblTurma = JSON.parse(tblTurma); //Converte String em um Object.
+  if (tblTurma === null) // Se não houver dados, inicializa um array vazio.
+      tblTurma = [];
 
   function Criar() {
     //Capturar os dados do forulário HTML e transforma-los em String.
-    var person = JSON.stringify({
+    var turma = JSON.stringify({
       Turma: $("#txtTurma").val(),
-      Matricula: $("#txtMatricula").val(),
-      NomeProf: $("#txtNome").val(),
+      MatriculaProf: $("#txtMatriculaTurma").val(),
+      NomeProfTurma: $("#txtNomeProfTurma").val(),
     
     }); 
     //Adicionar o objeto a tabela.
-    tblPersons.push(person);
+    tblTurma.push(turma);
     //Armazenar os dados em um Local Storage
-    localStorage.setItem("tblPersons", JSON.stringify(tblPersons));
+    localStorage.setItem("tblTurma", JSON.stringify(tblTurma));
     alert("Os dados foram armazenados com sucesso!"); //alerta!
     return true;
   }
 
   function Editar() {
     // Editar um item seleccionado na tabela.
-    tblPersons[selected_index] = JSON.stringify({
+    tblTurma[selected_index] = JSON.stringify({
       Turma: $("#txtTurma").val(),
-      Matricula: $("#txtMatricula").val(),
-      NomeProf: $("#txtNome").val(),
+      MatriculaProf: $("#txtMatriculaProf").val(),
+      NomeProfTurma: $("#txtNomeProfTurma").val(),
     });
     //Armazenando os dados em um Local Storage
-    localStorage.setItem("tblPersons", JSON.stringify(tblPersons)); 
+    localStorage.setItem("tblTurma", JSON.stringify(tblTurma)); 
     alert("Os dados foram editados"); //alerta!
     return true;
   }
 
   function Deletar() {
     //Excluindo um elemento selecionado na tabela!
-    tblPersons.splice(selected_index, 1); 
+    tblTurma.splice(selected_index, 1); 
     //Atualizando os dados no Local Storage
-    localStorage.setItem("tblPersons", JSON.stringify(tblPersons)); 
+    localStorage.setItem("tblTurma", JSON.stringify(tblTurma)); 
     alert("Pessoa exlcuída"); //alerta!
   }
 
@@ -57,12 +57,12 @@ $(function () {
             "<tbody>" +
             "</tbody>"
             ); //Agregando tabela a  estrutura HTML
-    for (var i in tblPersons) {
-        var per = JSON.parse(tblPersons[i]);
+    for (var i in tblTurma) {
+        var per = JSON.parse(tblTurma[i]);
         $("#tblList tbody").append("<tr>" +                    
                 "<td>" + per.Turma + "</td>" +
-                "<td>" + per.Matricula+ "</td>" +
-                "<td>" + per.NomeProf + "</td>" +                               
+                "<td>" + per.MatriculaProf+ "</td>" +
+                "<td>" + per.NomeProfTurma + "</td>" +                               
                 "<td><img src='img/edit.png' alt='Edit" + i + "' class='btnEdit'/>&nbsp &nbsp<img src='img/delete.png' alt='Delete" + i + "' class='btnDelete'/></td>" +
                 "</tr>"
                 );
@@ -83,12 +83,11 @@ $(function () {
     //Obter o identificador do item editado.
     selected_index = parseInt($(this).attr("alt").replace("Edit", ""));
     // Convertando de JSON para o formato editável dos dados.
-    var per = JSON.parse(tblPersons[selected_index]); 
-    $("#txtMatricula").val(per.Matricula);
-    $("#txtCpf").val(per.Cpf);
-    $("#txtNome").val(per.Nome);
-    $("#txtNascimento").val(per.Nascimento);
-    $("#txtMatricula").attr("readonly", "readonly");
+    var per = JSON.parse(tblTurma[selected_index]); 
+    $("#txtTurma").val(per.Turma);
+    $("#txtMatriculaTurma").val(per.MatriculaProf);
+    $("#txtNomeProfTurma").val(per.NomeProfTurma);
+    $("#txtMatriculaTurma").attr("readonly", "readonly");
     $("#txtNome").focus();
   });
 

@@ -6,12 +6,40 @@ $(function () {
   if (tblTurma === null) // Se não houver dados, inicializa um array vazio.
       tblTurma = [];
 
+
+  /*Função para buscar pela matricula do aluno */
+  function buscarAluno(matricula){
+    var alunos = JSON.parse(localStorage.getItem("tblAluno"));
+    console.log(matricula+" aluno");
+    for(var i in alunos){
+      var aluno = JSON.parse(alunos[i]);
+      if(aluno.MatriculaAluno==matricula){
+        return aluno.NomeAluno;
+      }
+    }
+    return "Matricula inexistente";
+
+  }
+
+  function buscarProfessor(matricula){
+    var professores = JSON.parse(localStorage.getItem("tblProfessor"));
+    console.log(matricula+" professor");
+    for(var i in professores){
+      var professor = JSON.parse(professores[i])
+      if(professor.Matricula==matricula){
+        return professor.Nome;
+      }
+    }
+    return "Professor inexistente";
+  }
+
+  //Capturar os dados do forulário HTML e transforma-los em String.
   function Criar() {
-    //Capturar os dados do forulário HTML e transforma-los em String.
-    var turma = JSON.stringify({
-      Turma: $("#txtTurma").val(),
-      MatriculaProf: $("#txtMatriculaTurma").val(),
-      NomeProfTurma: $("#txtNomeProfTurma").val(),
+    
+        var turma = JSON.stringify({
+        Turma: $("#txtTurmaNome").val(),
+        MatriculaProfessor: $("#txtMatriculaProfessor").val(),
+        MatriculaAluno: $("#txtMatriculaAluno").val(),     
     
     }); 
     //Adicionar o objeto a tabela.
@@ -25,9 +53,9 @@ $(function () {
   function Editar() {
     // Editar um item seleccionado na tabela.
     tblTurma[selected_index] = JSON.stringify({
-      Turma: $("#txtTurma").val(),
-      MatriculaProf: $("#txtMatriculaProf").val(),
-      NomeProfTurma: $("#txtNomeProfTurma").val(),
+      Turma: $("#txtTurmaNome").val(),
+      MatriculaProfessor: $("#txtMatriculaProfessor").val(),
+      MatriculaAluno: $("#txtMatriculaAluno").val(),
     });
     //Armazenando os dados em um Local Storage
     localStorage.setItem("tblTurma", JSON.stringify(tblTurma)); 
@@ -49,8 +77,8 @@ $(function () {
             "<thead>" +
             "<tr>" +                
             "<th>Nome da Turma</th>" +
-            "<th>Matricula do Aluno</th>" +
             "<th>Nome do Professor</th>" +
+            "<th>Nome do Aluno</th>" +
             "<th>Opções</th>" +
             "</tr>" +
             "</thead>" +
@@ -61,8 +89,8 @@ $(function () {
         var per = JSON.parse(tblTurma[i]);
         $("#tblList tbody").append("<tr>" +                    
                 "<td>" + per.Turma + "</td>" +
-                "<td>" + per.MatriculaProf+ "</td>" +
-                "<td>" + per.NomeProfTurma + "</td>" +                               
+                "<td>" + buscarProfessor(per.MatriculaProfessor)+ "</td>" +
+                "<td>" + buscarAluno(per.MatriculaAluno) + "</td>" +                                               
                 "<td><img src='img/edit.png' alt='Edit" + i + "' class='btnEdit'/>&nbsp &nbsp<img src='img/delete.png' alt='Delete" + i + "' class='btnDelete'/></td>" +
                 "</tr>"
                 );
@@ -84,11 +112,10 @@ $(function () {
     selected_index = parseInt($(this).attr("alt").replace("Edit", ""));
     // Convertando de JSON para o formato editável dos dados.
     var per = JSON.parse(tblTurma[selected_index]); 
-    $("#txtTurma").val(per.Turma);
-    $("#txtMatriculaTurma").val(per.MatriculaProf);
-    $("#txtNomeProfTurma").val(per.NomeProfTurma);
-    $("#txtMatriculaTurma").attr("readonly", "readonly");
-    $("#txtNome").focus();
+    $("#txtTurmaNome").val(per.Turma);
+    $("#txtMatriculaProfessor").val(per.MatriculaProfessor).attr("readonly", "readonly");
+    $("#txtMatriculaAluno").val(per.MatriculaAluno).attr("readonly", "readonly");
+    $("#txtTurmaNome").focus();
   });
 
   $(".btnDelete").bind("click", function () {

@@ -12,6 +12,7 @@ $(function () {
       Matricula: $("#txtMatricula").val(),
       Nome: $("#txtNome").val(),
       Nascimento: $("#txtNascimento").val(),
+      Admissao: $("#txtAdmissao").val(),
       Salario: $("#txtSalario").val(),
     }); 
     //Adicionar o objeto a tabela.
@@ -25,10 +26,11 @@ $(function () {
   function Editar() {
     // Editar um item seleccionado na tabela.
     tblProfessor[selected_index] = JSON.stringify({
-        Matricula: $("#txtMatricula").val(),
-        Nome: $("#txtNome").val(),
-        Nascimento: $("#txtNascimento").val(),
-        Salario: $("#txtSalario").val(),
+      Matricula: $("#txtMatricula").val(),
+      Nome: $("#txtNome").val(),
+      Nascimento: $("#txtNascimento").val(),
+      Admissao: $("#txtAdmissao").val(),
+      Salario: $("#txtSalario").val(),
     });
     //Armazenando os dados em um Local Storage
     localStorage.setItem("tblProfessor", JSON.stringify(tblProfessor)); 
@@ -52,6 +54,7 @@ $(function () {
             "<th>Matricula</th>" +
             "<th>Nome</th>" +
             "<th>Data de Nascimento</th>" +
+            "<th>Data de Admissão</th>" +
             "<th>Salário </th>" +
             "<th>Opções</th>" +
             "</tr>" +
@@ -65,6 +68,7 @@ $(function () {
                 "<td>" + per.Matricula + "</td>" +
                 "<td>" + per.Nome + "</td>" +
                 "<td>" + per.Nascimento + "</td>" +
+                "<td>" + per.Admissao + "</td>" +
                 "<td>" + per.Salario + "</td>" +                 
                 "<td><img src='img/edit.png' alt='Edit" + i + "' class='btnEdit'/>&nbsp &nbsp<img src='img/delete.png' alt='Delete" + i + "' class='btnDelete'/></td>" +
                 "</tr>"
@@ -91,6 +95,7 @@ $(function () {
     $("#txtCpf").val(per.Cpf);
     $("#txtNome").val(per.Nome);
     $("#txtNascimento").val(per.Nascimento);
+    $("#txtAdmissao").val(per.Admissao);    
     $("#txtSalario").val(per.Salario);
     $("#txtMatricula").attr("readonly", "readonly");
     $("#txtNome").focus();
